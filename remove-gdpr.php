@@ -3,7 +3,7 @@
  Plugin Name: Remove GDPR
  Plugin URI: https://generalchicken.net/better-privacy/
  Description: Activate or deactivate GDPR / privacy related features.
- Version: 0.1
+ Version: 1.0
  Author: John Dee
  Author URI: https://generalchicken.net
  */

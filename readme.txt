@@ -1,16 +1,25 @@
-Better Privacy
+﻿=== Remove GDPR ===
+Contributors: johndeebdd
+Donate link: https://generalchicken.net/
+Tags: rollback, gdpr, feature
+Requires at least: 4.9
+Tested up to: 4.9.8
+Requires PHP: 5.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: trunk
 
-With the release of WordPress 4.9.6, several new tools were put into core that are related to the European Union's General Data Protection Regulation or [GDPR].
+Removes GDPR consent from comment forms. Useful for testing, IoT, sites in Nevada USA, or for other sites that do not need GDPR related features.
 
-This plugin rolls back some of those features without affecting WordPress core files. This may be useful for testing purposes, or if your install does not need to follow GDPR regulations [i.e. IoT installs, outside of EU, Nevada USA etc.]
+== Description ==
+Removes GDPR features from comment forms. Useful for testing, IoT, sites in Nevada USA, or for other sites that do not need GDPR related features.
 
-FEATURES:
+## Usage
+Once activated, navigate to Settings >> Privacy. New controls have been added.
 
-Deactivate new comment form cookie consent
+== Development ==
+## BDD Testing Bonus for Developers
+This plugin is distributed with Behavior Driven Development tests written for Codeception. Visit [generalchicken.net](https://generalchicken.net) for more information.
 
-From the admin dashboard:
-click SETTINGS >> PRIVACY
-
-ROADMAP May 26, 2018:
-
-GDPR rolled out this week. I will be adding the ability to toggle privacy features as users request it. Please contact johndeebdd@gmail.com if you would like to make a request.
+== Installation ==
+Clone or copy the file into your plugins directory, then activate the plugin from the admin menu. 
