@@ -6,8 +6,8 @@ class Acceptance extends \Codeception\Module{
     public function resetPlugin($I){
         $I->loginAsAdmin();
         $I->amOnPage("/wp-admin/plugins.php");
-        $I->deactivatePlugin('better-privacy');
-        $I->activatePlugin('better-privacy');
+        $I->deactivatePlugin('remove-gdpr');
+        $I->activatePlugin('remove-gdpr');
  
     }
     
