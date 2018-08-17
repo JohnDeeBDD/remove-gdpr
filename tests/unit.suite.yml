@@ -1,10 +1,9 @@
-class_name: UnitTester
+actor: UnitTester
 modules:
     enabled:
         - WPLoader
         - WPQueries
         - Asserts
-        - WPWebDriver
     config:
         WPLoader:
             wpRootFolder: /var/www/html
@@ -16,16 +15,6 @@ modules:
             domain: locahost
             adminEmail: admin@localhost
             title: WP Tests
-            plugins: [/better-privacy/better-privacy.php]
-            activatePlugins: [/SC5050/SC5050.php, /woocommerce/woocommerce.php]
+            plugins: [/WPbdd/WPbdd.php]
+            activatePlugins: [/WPbdd/WPbdd.php]
             bootstrapActions: []
-        WPWebDriver:
-            url: 'http://localhost'
-            adminUsername: 'admin'
-            adminPassword: 'password'
-            adminPath: '/wp-admin'
-            port: 4444
-            browser: phantomjs #./phantomjs --webdriver=4444
-            #browser: chrome #java -jar selenium.jar
-            window_size: maximize
-            

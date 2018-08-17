@@ -13,21 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         update_option('deactivateGdprCommentFieldFeature', TRUE);
     }
 }
+//$ValuesPhpFormReceiver = new \RemoveGDPR\ValuesPhpFormReceiver;
+//->bool_isFormBeingSubmitted();
     
 if(isset($_POST['gdpr-comment-opt-in'])){
     if ($_POST['gdpr-comment-opt-in'] == 1){
         update_option('gdpr-comment-opt-in', TRUE);
-    }else{
+     }else{
         update_option('gdpr-comment-opt-in', FALSE);
-    }
-}
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if (isset($_POST['allow-privacy-page'])){
-        update_option('allow-privacy-page', TRUE);
-    }else{
-        update_option('allow-privacy-page', FALSE);
     }
 }
 
@@ -134,16 +127,22 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 					<li>
 						&nbsp;&nbsp;
 						<input id = "gdpr-comment-opt-in-true" name="gdpr-comment-opt-in" type="radio" value="1" <?php if (get_option( 'gdpr-comment-opt-in' )){echo ("CHECKED");}?> />
-							<label for = "gdpr-comment-opt-in-true"><span>Do not use comment cookies.</span> <span class ="toggled-text-based-on-checkbox">Default not checked. User can opt-in.</span></label><br />
+							<label for = "gdpr-comment-opt-in-true"><span>Don't save cookies.</span> <span class ="toggled-text-based-on-checkbox">Default not checked. User can opt-in.</span></label><br />
 					</li>
 					<li>
 						&nbsp;&nbsp;
-						<input id = "gdpr-comment-opt-in-false" name="gdpr-comment-opt-in" type="radio" value="0" <?php if (get_option( 'gdpr-comment-opt-in' ) == TRUE){}else{echo ("CHECKED");}?> />
-							<label for = "gdpr-comment-opt-in-false"><span>Do use comment cookies.</span> <span class ="toggled-text-based-on-checkbox">Default checked. User can opt-out.</span></label>
+						<input id = "gdpr-comment-opt-in-false" name="gdpr-comment-opt-in" type="radio" value="0" <?php if (get_option( 'gdpr-comment-opt-in' )){}else{echo ("CHECKED");}?> />
+							<label for = "gdpr-comment-opt-in-false"><span>Do save cookies.</span> <span class ="toggled-text-based-on-checkbox">Default checked. User can opt-out.</span></label>
 					</li>
 				</ul>
 			</td>
 		</tr>
+		<?php 
+
+		$x = get_privacy_policy_url();
+		echo("page: $x<br />");
+		the_privacy_policy_link();
+		?>
 		<tr>
 			<th scope="row">
 				<?php
@@ -153,7 +152,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 			</th>
 			<td>
 			
-			<input name="allow-privacy-page" type="checkbox" id="allow-privacy-page" value="" class="regular-text" <?php if( get_option('allow-privacy-page') == TRUE){echo ("checked");}?> />
+			<input name="allow-privacy-page" type="checkbox" id="allow-privacy-page" value="" class="regular-text" /> 
 					Display Privacy Policy page
 				<ul>
 					<li>
@@ -197,6 +196,12 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 			</td></tr>
 	</table>
 </form>
+<form action = "/wp-admin/options-general.php?page=values.php" method = "post">
+<?php
+	wp_nonce_field( 'create-privacy-page' );
+	submit_button( __( 'Create New Page' ), 'primary', 'submit', false, array( 'id' => 'create-page' ) );
+?>
+</form>
 <script>
 	jQuery(document).ready(function(){
 		//alert('jQuery is working!');
@@ -208,17 +213,6 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		jQuery('#allow-comments-privacy').click(function(){
 			jQuery('.toggled-text-based-on-checkbox').fadeToggle();
 		});
-
-		jQuery( "form" ).submit(function( event ) {
-			if (jQuery('#allow-privacy-page').is(':checked')){
-				//event.preventDefault();
-				}else{
-					jQuery("#page_for_privacy_policy").val("0").change();
-					//alert('beep');
-					//event.preventDefault();
-			}
-		});
-
 	});
 </script>
 </div>

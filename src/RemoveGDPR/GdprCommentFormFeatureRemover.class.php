@@ -15,6 +15,8 @@ class GdprCommentFormFeatureRemover{
          }else{
 /* Someone explain this to me. I couldn't get  remove_action( 'set_comment_cookies', 'wp_set_comment_cookies' ); to work. So I used JS to blank out the form.
  * this is not an ideal solution. Why doesn't remove action work?
+ * This is incomrehensible to me:
+ * https://core.trac.wordpress.org/ticket/44342
  */
              
             $output = '
@@ -48,7 +50,7 @@ class GdprCommentFormFeatureRemover{
             <<<output
 <p class="comment-form-cookies-consent">
     <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" $checked />
-    <label for="wp-comment-cookies-consent">$l18nString goober</label>
+    <label for="wp-comment-cookies-consent">$l18nString</label>
 </p>
 output;
             if (isset($_POST['wp-comment-cookies-consent'])){
@@ -64,7 +66,7 @@ output;
 <<<output
 <p class="comment-form-cookies-consent">
     <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" $checked />
-    <label for="wp-comment-cookies-consent">$l18nString bottom</label>
+    <label for="wp-comment-cookies-consent">$l18nString</label>
 </p>
 output;
         }
