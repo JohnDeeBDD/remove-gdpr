@@ -6,8 +6,8 @@ $I = new AcceptanceTester($scenario);
 //When:
 $I->loginAsAdmin();
 $I->amOnPage("/wp-admin/plugins.php");
-$I->deactivatePlugin('better-privacy');
-$I->activatePlugin('better-privacy');
+$I->deactivatePlugin('remove-gdpr');
+$I->activatePlugin('remove-gdpr');
 
 //Then:
 //this is the "privacy" page:
