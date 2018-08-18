@@ -3,5 +3,5 @@
 $I = new AcceptanceTester($scenario);
 
 $I->wantTo('See that the browser can launch');
-$I->amOnUrl("https://wp-bdd.com");
+$I->amOnUrl("https://generalchicken.net");
 $I->see("Behavior Driven Development in WordPress");
