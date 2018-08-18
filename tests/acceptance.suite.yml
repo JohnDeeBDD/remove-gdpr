@@ -18,7 +18,7 @@ modules:
             #dump: 'tests/_data/WPbddActive.sql'
             #populator: 'sudo mysql wordpress < tests/_data/WPbddActive.sql -p'
         WPWebDriver:
-            url: 'http://ec2-54-87-27-12.compute-1.amazonaws.com'
+            url: 'http://replaceme.com'
             window_size: maximize
             adminUsername: 'admin'
             adminPassword: 'password'
